@@ -2,9 +2,7 @@
 
 A cute, interactive birthday surprise website in a soft 3D claymorphism style.
 
-## Live preview
-
-Open `index.html` in any browser, or enable GitHub Pages (Settings → Pages → Deploy from branch → `main` / root).
+**Live site:** https://cyberrrana.github.io/birthday-surprise/
 
 ## Personalize
 
