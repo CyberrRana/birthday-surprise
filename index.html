@@ -132,20 +132,31 @@ p{line-height:1.65}
 .gift.is-open .lid{transform:translateY(-96px) rotate(-18deg)}
 .gift.is-open .bow{transform:translate(-50%,-96px) rotate(-18deg)}
 /* ============ CAKE ============ */
-.cake{position:relative;width:min(270px,80vw);height:236px;margin:8px auto 22px}
-.cake .plate{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;height:26px;border-radius:50%;background:linear-gradient(160deg,#fff,#f6e7f0);box-shadow:0 16px 26px rgba(200,120,160,.28),inset -6px -6px 12px rgba(200,150,180,.3),inset 6px 6px 12px #fff}
-.cake .tier{position:absolute;left:50%;transform:translateX(-50%);border-radius:16px 16px 22px 22px;box-shadow:0 18px 30px rgba(220,120,165,.28),inset -12px -12px 24px rgba(196,84,132,.24),inset 12px 12px 24px rgba(255,255,255,.72)}
-.cake .tier-bottom{bottom:22px;width:100%;height:96px;background:linear-gradient(160deg,#ffe6d5 0%,#ffc8ab 48%,#ffb28c 100%)}
-.cake .tier-top{bottom:112px;width:74%;height:76px;background:linear-gradient(160deg,#ffd7e8 0%,#ffb0d0 48%,#f98fba 100%);border-radius:16px 16px 20px 20px}
-.cake .frosting{position:absolute;bottom:172px;left:50%;transform:translateX(-50%);width:74%;height:26px;border-radius:0 0 18px 18px;background:linear-gradient(180deg,#fffdf8,#fff2e3);box-shadow:inset 0 -6px 10px rgba(230,180,150,.35)}
-.cake .frosting::after{content:"";position:absolute;left:6%;right:6%;bottom:-12px;height:24px;border-radius:0 0 50% 50%/0 0 100% 100%;background:inherit;box-shadow:0 10px 16px rgba(220,140,170,.18)}
-.cake .candles{position:absolute;bottom:186px;left:50%;transform:translateX(-50%);width:74%;height:54px;display:flex;justify-content:center;gap:11px;align-items:flex-end}
-.candle{position:relative;width:11px;height:42px;border-radius:5px 5px 3px 3px;background:repeating-linear-gradient(45deg,#fff 0 6px,#ffd9e6 6px 12px);box-shadow:0 4px 10px rgba(200,120,150,.3),inset -2px 0 4px rgba(190,120,150,.3)}
+.cake{position:relative;width:min(286px,84vw);height:300px;margin:10px auto 20px}
+.cake .halo{position:absolute;left:50%;bottom:10px;transform:translateX(-50%);width:124%;height:170px;border-radius:50%;background:radial-gradient(ellipse at 50% 72%,rgba(255,205,140,.5) 0%,rgba(255,205,140,0) 68%);filter:blur(5px);z-index:0}
+.cake .plate{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;height:28px;border-radius:50%;background:linear-gradient(160deg,#fff,#f7e8f1);box-shadow:0 18px 30px rgba(200,120,160,.3),inset -6px -6px 12px rgba(200,150,180,.28),inset 6px 6px 12px #fff;z-index:1}
+.cake .tier{position:absolute;left:50%;transform:translateX(-50%);z-index:2;border-radius:14px 14px 24px 24px;box-shadow:0 18px 30px rgba(220,120,165,.26),inset -12px -12px 24px rgba(196,84,132,.22),inset 12px 12px 24px rgba(255,255,255,.7)}
+.cake .tier::before{content:"";position:absolute;left:-4px;right:-4px;top:-12px;height:30px;border-radius:16px;background:linear-gradient(180deg,#fffdf6,#fff2e0);box-shadow:inset 0 -5px 10px rgba(226,178,150,.3),0 4px 10px rgba(220,150,175,.16);z-index:3}
+.cake .tier::after{content:"";position:absolute;left:-4px;right:-4px;top:16px;height:22px;background-image:radial-gradient(circle at 50% 0,#fff2e0 0 10px,rgba(255,242,224,0) 11px);background-size:22px 22px;background-repeat:repeat-x;z-index:3}
+.cake .tier-bottom{bottom:24px;width:100%;height:104px;background:linear-gradient(160deg,#ffe2cd 0%,#ffc39f 46%,#f9a97f 100%)}
+.cake .tier-top{bottom:128px;width:70%;height:82px;background:linear-gradient(160deg,#ffe0ee 0%,#ffb3d2 46%,#f78fb6 100%);border-radius:14px 14px 22px 22px}
+.sprinkle{position:absolute;width:5px;height:10px;border-radius:3px;z-index:4;box-shadow:0 1px 2px rgba(180,110,140,.25)}
+.sprinkle.pink{background:#ff8fbb;transform:rotate(22deg)}
+.sprinkle.lilac{background:#c9b6f0;transform:rotate(-28deg)}
+.sprinkle.gold{background:#ffd166;transform:rotate(58deg)}
+.sprinkle.mint{background:#9bdcf7;transform:rotate(-58deg)}
+.cake .berry{position:absolute;bottom:19px;width:18px;height:18px;border-radius:50%;z-index:4;background:radial-gradient(circle at 35% 30%,#ff8a9c 0%,#e8455f 60%,#c02c45 100%);box-shadow:0 4px 8px rgba(190,50,80,.32),inset -2px -2px 4px rgba(150,20,50,.35)}
+.cake .berry::after{content:"";position:absolute;top:-5px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:2px 60% 2px 60%;background:#6cc47a;box-shadow:0 1px 2px rgba(80,140,90,.35)}
+.cake .berry-left{left:5%}
+.cake .berry-right{right:5%}
+.cake .candles{position:absolute;bottom:206px;left:50%;transform:translateX(-50%);width:70%;height:62px;display:flex;justify-content:center;gap:12px;align-items:flex-end;z-index:5}
+.candle{position:relative;width:11px;height:44px;border-radius:5px 5px 3px 3px;background:repeating-linear-gradient(-45deg,#fff 0 6px,#ffd9e6 6px 12px);box-shadow:0 5px 10px rgba(200,120,150,.3),inset -2px 0 4px rgba(190,120,150,.3)}
+.candle::after{content:"";position:absolute;left:-2px;right:-2px;bottom:0;height:7px;border-radius:0 0 5px 5px;background:#fff;box-shadow:0 2px 4px rgba(190,120,150,.28)}
 .candle .flame{
-  position:absolute;left:50%;bottom:100%;width:13px;height:20px;margin-left:-6.5px;margin-bottom:2px;
-  border-radius:50% 50% 50% 50%/60% 60% 40% 40%;
-  background:radial-gradient(circle at 50% 75%,#fff5b0 0%,#ffd447 35%,#ff9b2f 70%,#ff6b2f 100%);
-  box-shadow:0 0 10px 3px rgba(255,180,70,.55),0 0 26px 10px rgba(255,140,60,.28);
+  position:absolute;left:50%;bottom:100%;width:14px;height:22px;margin-left:-7px;margin-bottom:3px;
+  border-radius:50% 50% 50% 50%/62% 62% 38% 38%;
+  background:radial-gradient(circle at 50% 72%,#fffbe0 0%,#ffe066 34%,#ffab2e 68%,#ff7a1f 100%);
+  box-shadow:0 0 12px 4px rgba(255,190,80,.6),0 0 30px 12px rgba(255,140,60,.3);
   transform-origin:50% 100%;animation:flicker 1.6s ease-in-out infinite;transition:opacity .35s ease,transform .35s ease
 }
 @keyframes flicker{0%,100%{transform:scale(1) rotate(-2deg)}50%{transform:scale(1.12,.94) rotate(3deg)}}
@@ -237,16 +248,17 @@ p{line-height:1.65}
 /* ============ HER NAME ============ */
 .name-spell{
   font-family:'Fredoka',sans-serif;font-weight:700;letter-spacing:.01em;
-  font-size:clamp(2.4rem,12vw,3.7rem);line-height:1.08;margin:6px 0 4px;
+  font-size:clamp(1.78rem,8.4vw,2.95rem);line-height:1.16;margin:6px 0 4px;
   color:#e8609b;text-shadow:0 3px 0 #fff,0 10px 20px rgba(232,96,155,.3)
 }
+.name-spell .space{width:.24em}
 .name-spell span{
   display:inline-block;transform-origin:50% 80%;
   animation:letterPop .85s cubic-bezier(.34,1.56,.64,1) both
 }
 .name-spell span:nth-child(3n){color:#b98fe8}
 .name-spell span:nth-child(3n+2){color:#f577a8}
-.name-spell--sm{font-size:clamp(1.7rem,7.6vw,2.35rem);margin:2px 0 0}
+.name-spell--sm{font-size:clamp(1.4rem,6.4vw,2rem);margin:2px 0 0}
 @keyframes letterPop{
   0%{opacity:0;transform:translateY(24px) scale(.3) rotate(-14deg)}
   62%{opacity:1;transform:translateY(-7px) scale(1.14) rotate(5deg)}
@@ -343,14 +355,25 @@ p{line-height:1.65}
     </div>
     <div class="wrap">
       <h2 id="bday-title">HAPPY BIRTHDAY,</h2>
-      <p class="name-spell" id="name-spell"></p>
+      <p class="name-spell" id="name-spell" data-spell="loveName"></p>
       <p class="lede">The whole day is yours, my love. 🎂</p>
 
       <div class="cake" id="bday-cake" aria-hidden="true">
-        <div class="plate"></div>
-        <div class="tier tier-bottom"></div>
-        <div class="tier tier-top"></div>
-        <div class="frosting"></div>
+        <span class="halo"></span>
+        <span class="plate"></span>
+        <span class="berry berry-left"></span>
+        <span class="berry berry-right"></span>
+        <div class="tier tier-bottom">
+          <span class="sprinkle gold" style="left:16%;top:54%"></span>
+          <span class="sprinkle lilac" style="left:43%;top:40%"></span>
+          <span class="sprinkle mint" style="left:71%;top:57%"></span>
+          <span class="sprinkle pink" style="left:86%;top:44%"></span>
+        </div>
+        <div class="tier tier-top">
+          <span class="sprinkle pink" style="left:18%;top:60%"></span>
+          <span class="sprinkle gold" style="left:56%;top:46%"></span>
+          <span class="sprinkle lilac" style="left:79%;top:64%"></span>
+        </div>
         <div class="candles">
           <span class="candle"><i class="flame"></i></span>
           <span class="candle"><i class="flame"></i></span>
@@ -406,14 +429,25 @@ p{line-height:1.65}
   <!-- 4. WISH -->
   <section class="screen" id="screen-wish" aria-labelledby="wish-title">
     <div class="wrap">
-      <h2 id="wish-title">Make a little wish, <span data-name>pookie</span>! ♡</h2>
+      <h2 id="wish-title">Make a little wish, <span data-dear-name>Dear Swagatika</span>! ♡</h2>
       <p class="lede">Close your eyes for a second, then blow the candles.</p>
 
       <div class="cake" id="wish-cake">
-        <div class="plate"></div>
-        <div class="tier tier-bottom"></div>
-        <div class="tier tier-top"></div>
-        <div class="frosting"></div>
+        <span class="halo"></span>
+        <span class="plate"></span>
+        <span class="berry berry-left"></span>
+        <span class="berry berry-right"></span>
+        <div class="tier tier-bottom">
+          <span class="sprinkle gold" style="left:16%;top:54%"></span>
+          <span class="sprinkle lilac" style="left:43%;top:40%"></span>
+          <span class="sprinkle mint" style="left:71%;top:57%"></span>
+          <span class="sprinkle pink" style="left:86%;top:44%"></span>
+        </div>
+        <div class="tier tier-top">
+          <span class="sprinkle pink" style="left:18%;top:60%"></span>
+          <span class="sprinkle gold" style="left:56%;top:46%"></span>
+          <span class="sprinkle lilac" style="left:79%;top:64%"></span>
+        </div>
         <div class="candles">
           <span class="candle"><i class="flame"></i></span>
           <span class="candle"><i class="flame"></i></span>
@@ -454,12 +488,12 @@ p{line-height:1.65}
       </div>
 
       <article class="letter" id="letter" hidden aria-live="polite">
-        <p class="hand">Dear Birthday Girl,</p>
+        <p class="hand">Dear <span data-name>Swagatika</span>,</p>
         <p class="hand" style="margin-top:12px">If I could gift you one thing today, it would be the ability to see yourself through the eyes of the people who adore you.</p>
         <p class="hand" style="margin-top:12px">You are a little bit of sunshine, a little bit of magic, and a whole lot of wonderful.</p>
         <p class="hand" style="margin-top:12px">Keep smiling, keep dreaming, and keep being your adorable self.</p>
         <p class="hand" style="margin-top:12px">And if you ever wonder where you belong — you are my favourite person, my favourite feeling, and my favourite forever.</p>
-        <p class="hand" style="margin-top:12px">Happy Birthday, <span data-name>Pookie</span>! ♡</p>
+        <p class="hand" style="margin-top:12px">Happy Birthday, <span data-name>Swagatika</span>! ♡</p>
         <p class="sig">With all my love,<br><span data-from>Your Love</span> 🎀</p>
       </article>
 
@@ -473,7 +507,7 @@ p{line-height:1.65}
   <section class="screen" id="screen-final" aria-labelledby="final-title">
     <div class="wrap">
       <h2 id="final-title">That's Not All, Birthday Girl! 💗</h2>
-      <p class="name-spell name-spell--sm" id="final-spell"></p>
+      <p class="name-spell name-spell--sm" id="final-spell" data-spell="dearName"></p>
       <div class="toy-row" aria-hidden="true">
         <div class="toy">🧸</div>
         <div class="toy">🌸</div>
@@ -490,7 +524,7 @@ p{line-height:1.65}
       <div class="finale" id="finale" hidden aria-live="polite">
         <p class="hand">Sending you 1,000,000 virtual hugs! ♡<br>
         Stay cute, stay happy, and never stop being you.<br>
-        HAPPY BIRTHDAY, <span class="caps" data-name>Pookie</span>! 🎂🎀<br>
+        HAPPY BIRTHDAY, <span class="caps" data-love-name>My Love Swagatika</span>! 🎂🎀<br>
         You are my favourite person, my favourite feeling, my favourite forever. ♡</p>
       </div>
     </div>
@@ -506,8 +540,10 @@ p{line-height:1.65}
      PERSONALIZE HERE — change the name (and nothing else) 
   ------------------------------------------------------------------ */
   const CONFIG = {
-    name: 'Swagatika',   // her name — change it here only
-    from: 'Your Love'    // signature at the end of the letter
+    name: 'Swagatika',                    // her name
+    loveName: 'My Love Swagatika',        // birthday screen + finale
+    dearName: 'Dear Swagatika',           // wish heading + closing spell
+    from: 'Your Love'                     // signature at the end of the letter
   };
 
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -517,6 +553,12 @@ p{line-height:1.65}
   function applyName() {
     document.querySelectorAll('[data-name]').forEach(function (el) {
       el.textContent = CONFIG.name;
+    });
+    document.querySelectorAll('[data-love-name]').forEach(function (el) {
+      el.textContent = CONFIG.loveName;
+    });
+    document.querySelectorAll('[data-dear-name]').forEach(function (el) {
+      el.textContent = CONFIG.dearName;
     });
     document.querySelectorAll('[data-from]').forEach(function (el) {
       el.textContent = CONFIG.from;
@@ -530,13 +572,19 @@ p{line-height:1.65}
     ['name-spell', 'final-spell'].forEach(function (id) {
       const el = $(id);
       if (!el) return;
+      const phrase = CONFIG[el.getAttribute('data-spell') || 'name'];
       el.innerHTML = '';
-      el.setAttribute('aria-label', CONFIG.name);
-      Array.prototype.forEach.call(CONFIG.name, function (ch, i) {
+      el.setAttribute('aria-label', phrase);
+      Array.prototype.forEach.call(phrase, function (ch, i) {
         const span = document.createElement('span');
-        span.textContent = ch;
+        if (ch === ' ') {
+          span.className = 'space';
+          span.textContent = '\u00A0';
+        } else {
+          span.textContent = ch;
+        }
         span.setAttribute('aria-hidden', 'true');
-        span.style.animationDelay = (i * 80) + 'ms';
+        span.style.animationDelay = (i * 60) + 'ms';
         el.appendChild(span);
       });
     });

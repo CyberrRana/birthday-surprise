@@ -6,12 +6,14 @@ A cute, interactive birthday surprise website in a soft 3D claymorphism style, m
 
 ## Personalize
 
-Open `index.html` and change the name in one place:
+Open `index.html` and change the names in one place:
 
 ```js
 const CONFIG = {
-  name: 'Swagatika',   // her name
-  from: 'Your Love'    // letter signature
+  name: 'Swagatika',              // her name
+  loveName: 'My Love Swagatika',  // birthday screen + finale
+  dearName: 'Dear Swagatika',     // wish heading + closing spell
+  from: 'Your Love'               // letter signature
 };
 ```
 
@@ -20,7 +22,7 @@ Her name is spelled out letter-by-letter on the birthday screen and in the final
 ## What's inside
 
 1. Gift-box landing screen with confetti opening and floating name letters
-2. Birthday celebration with an animated name reveal, cake and floating balloons
+2. Birthday celebration with an animated name reveal, a two-tier clay cake (dripping frosting, sprinkles, berries and glowing candles) and floating balloons
 3. Three love cards (reminder / wish / virtual hug)
 4. Blow-the-candles wish interaction
 5. Envelope with a handwritten letter
