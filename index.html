@@ -137,18 +137,24 @@ p{line-height:1.65}
 .cake .plate{position:absolute;bottom:0;left:50%;transform:translateX(-50%);width:100%;height:28px;border-radius:50%;background:linear-gradient(160deg,#fff,#f7e8f1);box-shadow:0 18px 30px rgba(200,120,160,.3),inset -6px -6px 12px rgba(200,150,180,.28),inset 6px 6px 12px #fff;z-index:1}
 .cake .tier{position:absolute;left:50%;transform:translateX(-50%);z-index:2;border-radius:14px 14px 24px 24px;box-shadow:0 18px 30px rgba(220,120,165,.26),inset -12px -12px 24px rgba(196,84,132,.22),inset 12px 12px 24px rgba(255,255,255,.7)}
 .cake .tier::before{content:"";position:absolute;left:-4px;right:-4px;top:-12px;height:30px;border-radius:16px;background:linear-gradient(180deg,#fffdf6,#fff2e0);box-shadow:inset 0 -5px 10px rgba(226,178,150,.3),0 4px 10px rgba(220,150,175,.16);z-index:3}
-.cake .tier::after{content:"";position:absolute;left:-4px;right:-4px;top:16px;height:22px;background-image:radial-gradient(circle at 50% 0,#fff2e0 0 10px,rgba(255,242,224,0) 11px);background-size:22px 22px;background-repeat:repeat-x;z-index:3}
-.cake .tier-bottom{bottom:24px;width:100%;height:104px;background:linear-gradient(160deg,#ffe2cd 0%,#ffc39f 46%,#f9a97f 100%)}
+/* Frosting drips: fixed, evenly spaced scallops so both edges stay clean.
+   Keeping every centre under 93% and the radii in px stops the rightmost
+   scallop from being sliced off by the element edge. */
+.cake .tier::after{content:"";position:absolute;left:-4px;right:-4px;top:18px;height:13px;z-index:3;background-repeat:no-repeat;background-image:radial-gradient(circle at 8% 0,#fff2e0 0 9px,rgba(255,242,224,0) 10px),radial-gradient(circle at 20% 0,#fff2e0 0 12px,rgba(255,242,224,0) 13px),radial-gradient(circle at 32% 0,#fff2e0 0 9px,rgba(255,242,224,0) 10px),radial-gradient(circle at 44% 0,#fff2e0 0 12px,rgba(255,242,224,0) 13px),radial-gradient(circle at 56% 0,#fff2e0 0 9px,rgba(255,242,224,0) 10px),radial-gradient(circle at 68% 0,#fff2e0 0 12px,rgba(255,242,224,0) 13px),radial-gradient(circle at 80% 0,#fff2e0 0 9px,rgba(255,242,224,0) 10px),radial-gradient(circle at 92% 0,#fff2e0 0 12px,rgba(255,242,224,0) 13px)}
+.cake .tier-bottom{bottom:24px;width:92%;height:104px;background:linear-gradient(160deg,#ffe2cd 0%,#ffc39f 46%,#f9a97f 100%)}
 .cake .tier-top{bottom:128px;width:70%;height:82px;background:linear-gradient(160deg,#ffe0ee 0%,#ffb3d2 46%,#f78fb6 100%);border-radius:14px 14px 22px 22px}
 .sprinkle{position:absolute;width:5px;height:10px;border-radius:3px;z-index:4;box-shadow:0 1px 2px rgba(180,110,140,.25)}
 .sprinkle.pink{background:#ff8fbb;transform:rotate(22deg)}
 .sprinkle.lilac{background:#c9b6f0;transform:rotate(-28deg)}
 .sprinkle.gold{background:#ffd166;transform:rotate(58deg)}
 .sprinkle.mint{background:#9bdcf7;transform:rotate(-58deg)}
-.cake .berry{position:absolute;bottom:19px;width:18px;height:18px;border-radius:50%;z-index:4;background:radial-gradient(circle at 35% 30%,#ff8a9c 0%,#e8455f 60%,#c02c45 100%);box-shadow:0 4px 8px rgba(190,50,80,.32),inset -2px -2px 4px rgba(150,20,50,.35)}
-.cake .berry::after{content:"";position:absolute;top:-5px;left:50%;transform:translateX(-50%);width:8px;height:8px;border-radius:2px 60% 2px 60%;background:#6cc47a;box-shadow:0 1px 2px rgba(80,140,90,.35)}
-.cake .berry-left{left:5%}
-.cake .berry-right{right:5%}
+/* Berries sit ON the plate in front of the cake: z-index 1 keeps them above
+   the plate but behind the tiers, so the stems tuck under the cake instead
+   of floating over its lower edge. */
+.cake .berry{position:absolute;bottom:5px;width:15px;height:15px;border-radius:50%;z-index:1;background:radial-gradient(circle at 35% 30%,#ff8a9c 0%,#e8455f 60%,#c02c45 100%);box-shadow:0 4px 8px rgba(190,50,80,.32),inset -2px -2px 4px rgba(150,20,50,.35)}
+.cake .berry::after{content:"";position:absolute;top:-3px;left:50%;transform:translateX(-50%);width:7px;height:6px;border-radius:2px 60% 2px 60%;background:#6cc47a;box-shadow:0 1px 2px rgba(80,140,90,.35)}
+.cake .berry-left{left:2.5%}
+.cake .berry-right{right:2.5%}
 .cake .candles{position:absolute;bottom:206px;left:50%;transform:translateX(-50%);width:70%;height:62px;display:flex;justify-content:center;gap:12px;align-items:flex-end;z-index:5}
 .candle{position:relative;width:11px;height:44px;border-radius:5px 5px 3px 3px;background:repeating-linear-gradient(-45deg,#fff 0 6px,#ffd9e6 6px 12px);box-shadow:0 5px 10px rgba(200,120,150,.3),inset -2px 0 4px rgba(190,120,150,.3)}
 .candle::after{content:"";position:absolute;left:-2px;right:-2px;bottom:0;height:7px;border-radius:0 0 5px 5px;background:#fff;box-shadow:0 2px 4px rgba(190,120,150,.28)}
