@@ -232,13 +232,50 @@ p{line-height:1.65}
 .toy-row{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin:26px 0 8px}
 .toy{
   width:66px;height:66px;border-radius:50%;display:grid;place-items:center;font-size:1.7rem;
-  background:linear-gradient(160deg,#fff,#ffeaf4);
+  background:linear-gradient(160deg,#fff,#ffeaf4);border:0;padding:0;color:inherit;
+  cursor:pointer;-webkit-tap-highlight-color:transparent;
   box-shadow:var(--clay-sm);animation:bob 5.5s ease-in-out infinite
 }
-.toy:nth-child(2){animation-delay:-1.2s}
-.toy:nth-child(3){animation-delay:-2.4s}
-.toy:nth-child(4){animation-delay:-3.6s}
-.toy:nth-child(5){animation-delay:-4.8s}
+.toy:active{transform:scale(.9)}
+.toy:focus-visible{outline:3px solid #fff;outline-offset:4px;box-shadow:0 0 0 7px rgba(217,82,140,.5)}
+.tap-hint{font-family:'Caveat',cursive;font-size:1.05rem;color:#b3708e;margin-top:4px}
+/* each friend throws a different little tantrum */
+.toy.anim-wiggle{animation:wiggle .8s cubic-bezier(.36,.07,.19,.97) both}
+@keyframes wiggle{
+  0%,100%{transform:rotate(0) scale(1)}
+  15%{transform:rotate(-15deg) scale(1.14)}
+  30%{transform:rotate(13deg) scale(1.06)}
+  45%{transform:rotate(-11deg) scale(1.16)}
+  60%{transform:rotate(9deg) scale(1.05)}
+  80%{transform:rotate(-5deg) scale(1.09)}
+}
+.toy.anim-spin{animation:spinBloom .95s cubic-bezier(.22,1,.36,1) both}
+@keyframes spinBloom{
+  0%{transform:rotate(0) scale(1)}
+  45%{transform:rotate(210deg) scale(1.38)}
+  75%{transform:rotate(330deg) scale(1.08)}
+  100%{transform:rotate(360deg) scale(1)}
+}
+.toy.anim-beat{animation:crazyBeat 1.05s ease-in-out both}
+@keyframes crazyBeat{
+  0%,100%{transform:scale(1)}
+  10%{transform:scale(1.36)}
+  22%{transform:scale(.92)}
+  34%{transform:scale(1.3)}
+  48%{transform:scale(.94)}
+  62%{transform:scale(1.2)}
+  78%{transform:scale(.98)}
+}
+.toy.anim-pop{animation:popParty .95s cubic-bezier(.34,1.56,.64,1) both}
+@keyframes popParty{
+  0%{transform:scale(1) rotate(0)}
+  16%{transform:scale(1.24) rotate(-9deg)}
+  28%{transform:scale(.88) rotate(7deg)}
+  42%{transform:scale(1.32) rotate(-7deg)}
+  58%{transform:scale(.86) rotate(5deg)}
+  74%{transform:scale(1.18) rotate(-2deg)}
+  100%{transform:scale(1) rotate(0)}
+}
 .finale{margin-top:22px;animation:letterIn .6s cubic-bezier(.22,1,.36,1) both}
 .finale .hand{font-size:clamp(1.3rem,5.2vw,1.55rem);font-weight:600;color:#b8437a;line-height:1.6}
 .wish-done{
@@ -282,6 +319,12 @@ p{line-height:1.65}
   100%{transform:translate3d(var(--dx),-70vh,0) scale(.85) rotate(var(--rot));opacity:0}
 }
 .fx .spark{width:8px;height:8px;border-radius:50%;background:radial-gradient(circle,#fff 0%,#ffe9a8 45%,rgba(255,214,120,0) 70%);animation:sparkle var(--d) ease-out forwards}
+.fx .petal{width:13px;height:13px;border-radius:50% 0 50% 50%;background:linear-gradient(160deg,#ffe6f1,#ff8fbb);box-shadow:0 2px 6px rgba(255,120,170,.35);animation:petalFly var(--d) cubic-bezier(.18,.7,.4,1) forwards}
+@keyframes petalFly{
+  0%{transform:translate3d(0,0,0) rotate(0) scale(.6);opacity:1}
+  70%{opacity:1}
+  100%{transform:translate3d(var(--dx),var(--dy),0) rotate(var(--rot)) scale(1);opacity:0}
+}
 @keyframes sparkle{
   0%{transform:scale(.2);opacity:1}
   60%{opacity:1;transform:scale(1.5)}
@@ -508,13 +551,13 @@ p{line-height:1.65}
     <div class="wrap">
       <h2 id="final-title">That's Not All, Birthday Girl! 💗</h2>
       <p class="name-spell name-spell--sm" id="final-spell" data-spell="dearName"></p>
-      <div class="toy-row" aria-hidden="true">
-        <div class="toy">🧸</div>
-        <div class="toy">🌸</div>
-        <div class="toy heartbeat">💗</div>
-        <div class="toy">🎁</div>
-        <div class="toy">🦄</div>
+      <div class="toy-row" role="group" aria-label="Tap a little friend">
+        <button class="toy" type="button" data-toy="bear" aria-label="Teddy squeezes out hearts">🧸</button>
+        <button class="toy" type="button" data-toy="flower" aria-label="Flower bursts into petals">🌸</button>
+        <button class="toy" type="button" data-toy="heart" aria-label="Heart rains love">💗</button>
+        <button class="toy" type="button" data-toy="gift" aria-label="Gift pops with confetti">🎁</button>
       </div>
+      <p class="tap-hint">tap them ♡</p>
       <p class="lede">One more thing before you go...</p>
 
       <div class="btn-row">
@@ -701,6 +744,47 @@ p{line-height:1.65}
     }
   }
 
+  /* Petals fly out in every direction. */
+  function petalBurst(originEl, count) {
+    if (reduceMotion.matches) return;
+    const rect = originEl.getBoundingClientRect();
+    const cx = rect.left + rect.width / 2;
+    const cy = rect.top + rect.height / 2;
+    const total = count || 22;
+    for (let i = 0; i < total; i++) {
+      const el = document.createElement('i');
+      el.className = 'petal';
+      const angle = (Math.PI * 2 * i) / total + rand(-0.2, 0.2);
+      const dist = rand(70, 200);
+      el.style.left = cx + 'px';
+      el.style.top = cy + 'px';
+      el.style.setProperty('--dx', (Math.cos(angle) * dist).toFixed(1) + 'px');
+      el.style.setProperty('--dy', (Math.sin(angle) * dist).toFixed(1) + 'px');
+      el.style.setProperty('--rot', rand(-360, 360) + 'deg');
+      el.style.setProperty('--d', rand(0.7, 1.25) + 's');
+      el.addEventListener('animationend', function () { el.remove(); });
+      fx.appendChild(el);
+    }
+  }
+
+  /* Love falls from everywhere at once. */
+  function heartRain(count) {
+    if (reduceMotion.matches) return;
+    for (let i = 0; i < (count || 24); i++) {
+      const el = document.createElement('i');
+      el.className = 'heart';
+      el.textContent = Math.random() > 0.5 ? '💗' : '💖';
+      el.style.left = rand(0, 100) + 'vw';
+      el.style.top = rand(55, 100) + 'vh';
+      el.style.setProperty('--dx', rand(-8, 8) + 'vw');
+      el.style.setProperty('--rot', rand(-40, 40) + 'deg');
+      el.style.setProperty('--d', rand(1.8, 3) + 's');
+      el.style.animationDelay = rand(0, 0.6) + 's';
+      el.addEventListener('animationend', function () { el.remove(); });
+      fx.appendChild(el);
+    }
+  }
+
   /* ---------------- 1. Gift -> birthday ---------------- */
   const gift = $('gift');
   let opening = false;
@@ -816,6 +900,41 @@ p{line-height:1.65}
     floatHearts(30, btnHug);
     floatNameHearts(12, btnHug);
     sparkleAt(btnHug, 24);
+  });
+
+  /* ---------------- 6b. The four little friends ---------------- */
+  const TOY_ANIM = {
+    bear: 'anim-wiggle',
+    flower: 'anim-spin',
+    heart: 'anim-beat',
+    gift: 'anim-pop'
+  };
+
+  const TOY_FX = {
+    bear: function (el) { floatHearts(18, el); },
+    flower: function (el) { petalBurst(el, 24); sparkleAt(el, 12); },
+    heart: function (el) { heartRain(28); sparkleAt(el, 16); },
+    gift: function (el) { burstConfetti(80); sparkleAt(el, 26); }
+  };
+
+  Array.prototype.forEach.call(document.querySelectorAll('.toy'), function (toy) {
+    toy.addEventListener('click', function () {
+      const kind = toy.getAttribute('data-toy');
+      const anim = TOY_ANIM[kind];
+      if (anim) {
+        toy.classList.remove(anim);
+        void toy.offsetWidth;
+        toy.classList.add(anim);
+        const clear = function (e) {
+          if (e && e.target !== toy) return;
+          toy.classList.remove(anim);
+          toy.removeEventListener('animationend', clear);
+        };
+        toy.addEventListener('animationend', clear);
+        setTimeout(clear, 1400);
+      }
+      if (TOY_FX[kind]) TOY_FX[kind](toy);
+    });
   });
 
   /* ---------------- Boot ---------------- */

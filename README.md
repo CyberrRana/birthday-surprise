@@ -26,6 +26,10 @@ Her name is spelled out letter-by-letter on the birthday screen and in the final
 3. Three love cards (reminder / wish / virtual hug)
 4. Blow-the-candles wish interaction
 5. Envelope with a handwritten letter
-6. Final one-last-hug surprise
+6. Final section with four tappable friends, each with its own animation:
+   - 🧸 teddy — wiggles and sheds hearts
+   - 🌸 flower — spins and bursts petals
+   - 💗 heart — beats and rains love
+   - 🎁 gift — pops with confetti
 
 Built with plain HTML, CSS and JavaScript — no build step, no dependencies, mobile-first, and `prefers-reduced-motion` friendly.
